@@ -1,0 +1,26 @@
+#!/bin/usr/env/python
+
+from sklearn import datasets
+
+#Los datos se entienden como array bidimensionales o matrices de tamanio [Samples][Features]
+iris = datasets.load_iris()
+data = iris.data()
+data.shape
+#(150, 4)
+#Los datos del dataset iris, tienen 150 observaciones por 4 categorias.
+
+#No todos los datasets van a estar en la forma de [samples][features]
+#por lo tanto se tienen que redimensionar para que scikit-learn los pueda utilizar
+
+#El dataset de digits, es un dataset creado a partir de 1797 muestras de imagenes de 8x8 de numeros hechos a mano.
+digitst = datasets.load_digits()
+digits.image_shape
+#(1797, 8, 8)
+
+#Como el dataset no esta en una forma en la que scikit-learn pueda usar
+#se pasa a su transformacion
+data = digits.images.reshape((digits.images.shape[0], -1))
+
+#Visualizacion del dataset
+import matplotlib.pyplot as plt
+plt.imshow(digits.images[-1], cmap=plt.cm.gray_r)
